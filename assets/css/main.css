@@ -531,7 +531,8 @@ section,
   padding-left: 80px;   /* controls left spacing */
   text-align: left;
 }
-
+transform: translateY(-80px);
+}
 /* Text alignment */
 .hero h2,
 .hero p {
