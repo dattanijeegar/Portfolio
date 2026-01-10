@@ -449,6 +449,7 @@ section,
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+/*------------------------------------------------------*/
 .hero {
   width: 100%;
   min-height: 100vh;
@@ -469,9 +470,10 @@ section,
   z-index: 1;
 }
 
+/* Dark overlay for better text readability */
 .hero:before {
   content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 70%);
+  background: rgba(0, 0, 0, 0.45);
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -480,22 +482,27 @@ section,
 .hero .container {
   position: relative;
   z-index: 3;
+  transform: translateY(-90px); /* moves text up */
 }
 
 .hero h2 {
   margin: 0;
   font-size: 64px;
   font-weight: 700;
+  color: #F5F5F5; /* premium off-white */
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
 .hero p {
   margin: 5px 0 0 0;
   font-size: 26px;
+  color: #EAEAEA;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 .hero p span {
   letter-spacing: 1px;
-  border-bottom: 2px solid var(--accent-color);
+  border-bottom: 2px solid #F4C430; /* gold accent */
 }
 
 .hero .social-links {
@@ -505,16 +512,17 @@ section,
 .hero .social-links a {
   font-size: 24px;
   display: inline-block;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1;
   margin-right: 20px;
   transition: 0.3s;
 }
 
 .hero .social-links a:hover {
-  color: var(--accent-color);
+  color: #F4C430;
 }
 
+/* Mobile responsiveness */
 @media (max-width: 768px) {
   .hero h2 {
     font-size: 32px;
@@ -522,6 +530,10 @@ section,
 
   .hero p {
     font-size: 20px;
+  }
+
+  .hero .container {
+    transform: translateY(-40px);
   }
 }
 
