@@ -1141,3 +1141,84 @@ section,
   height: auto;
   display: block;
 }
+
+/* ================================
+   ABOUT SECTION – WIDTH & LAYOUT FIX
+================================ */
+
+/* Make About section wider */
+#about .container {
+  max-width: 1140px;      /* Bootstrap large width */
+}
+
+/* Ensure proper row alignment */
+#about .row {
+  align-items: center;
+}
+
+/* Image column */
+#about .col-lg-4 {
+  display: flex;
+  justify-content: center;
+}
+
+/* Profile image */
+#about img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Text column */
+#about .content {
+  padding-left: 30px;
+}
+
+/* List styling */
+#about .content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#about .content ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+#about .content ul li i {
+  color: var(--accent-color);
+  font-size: 16px;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* ================================
+   RESPONSIVE FIXES
+================================ */
+
+@media (max-width: 992px) {
+  #about .content {
+    padding-left: 0;
+    margin-top: 20px;
+  }
+
+  #about img {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 768px) {
+  #about .container {
+    max-width: 100%;
+  }
+
+  #about .content h2 {
+    text-align: center;
+  }
+}
