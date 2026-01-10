@@ -136,22 +136,45 @@
     let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
     let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
-      });
+    const isoContainer = isotopeItem.querySelector('.isotope-container');
+
+imagesLoaded(isoContainer, function() {
+  initIsotope = new Isotope(isoContainer, {
+    itemSelector: '.isotope-item',
+    layoutMode: layout,
+    filter: filter,
+    sortBy: sort
+  });
+
+  // 🔥 FIX: re-layout after videos load
+  isoContainer.querySelectorAll('video').forEach(video => {
+    video.addEventListener('loadedmetadata', () => {
+      initIsotope.layout();
     });
+  });
+});
+
+// 🔥 FIX: re-layout on full page load (mobile safe)
+window.addEventListener('load', () => {
+  if (initIsotope) {
+    initIsotope.layout();
+  }
+});
+
 
     isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
       filters.addEventListener('click', function() {
         isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
         this.classList.add('filter-active');
         initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
+  filter: this.getAttribute('data-filter')
+});
+
+// 🔥 FIX overlap after filtering
+setTimeout(() => {
+  initIsotope.layout();
+}, 300);
+
         if (typeof aosInit === 'function') {
           aosInit();
         }
@@ -243,15 +266,7 @@ const glightbox = GLightbox({
   selector: '.glightbox'
 });
 
-/* Fix Isotope overlap on mobile after images/videos load */
-window.addEventListener('load', () => {
-  const isoContainer = document.querySelector('.isotope-container');
-  if (isoContainer && window.innerWidth <= 768) {
-    setTimeout(() => {
-      isoContainer.dispatchEvent(new Event('resize'));
-    }, 300);
-  }
-});
+
 
 
 
