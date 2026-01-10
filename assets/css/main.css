@@ -1313,6 +1313,33 @@ section,
   }
 
 }
+/* ==================================================
+   ISOTOPE MOBILE FIX – FORCE 2 ITEMS PER ROW
+   (NO HTML CHANGE, NO LAYOUT BREAK)
+================================================== */
+
+@media (max-width: 991px) {
+
+  /* Make isotope container behave normally */
+  .portfolio .isotope-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Force 2 columns */
+  .portfolio .portfolio-item {
+    width: 50% !important;
+    padding: 8px;
+  }
+
+}
+
+/* Small mobile fine tuning */
+@media (max-width: 575px) {
+  .portfolio .portfolio-item {
+    padding: 6px;
+  }
+}
 
 
 }
