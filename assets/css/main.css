@@ -412,7 +412,7 @@ section,
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 60px 0;
-  overflow: visible; /* 🔥 FIXES ISOTOPE OVERLAP */
+  overflow: hidden; /* 🔥 FIXES ISOTOPE OVERLAP */
 }
 
 
@@ -1291,75 +1291,18 @@ section,
   }
 
   /* =====================================
-   PORTFOLIO – FORCE 2 ITEMS PER ROW
-   Mobile + Tablet (No HTML Change)
+   MOBILE ONLY – ISOTOPE OVERLAP FIX
+   DOES NOT AFFECT DESKTOP
 ===================================== */
 
-/* Mobile & Tablet */
-@media (max-width: 991px) {
+@media (max-width: 768px) {
 
-  .portfolio .portfolio-item {
-    width: 50%;
+  #portfolio {
+    overflow: visible;
   }
 
-}
-
-/* Small mobile spacing fix */
-@media (max-width: 575px) {
-
-  .portfolio .portfolio-item {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-}
-/* ==================================================
-   ISOTOPE MOBILE FIX – FORCE 2 ITEMS PER ROW
-   (NO HTML CHANGE, NO LAYOUT BREAK)
-================================================== */
-
-@media (max-width: 991px) {
-
-  /* Make isotope container behave normally */
   .portfolio .isotope-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-  }
-
-  /* Force 2 columns */
-  .portfolio .portfolio-item {
-    width: 50% !important;
-    padding: 8px;
+    overflow: visible;
   }
 
 }
-
-/* Small mobile fine tuning */
-@media (max-width: 575px) {
-  .portfolio .portfolio-item {
-    padding: 6px;
-  }
-}
-
-
-}
-/* ==================================================
-   FORCE 2 ITEMS PER ROW ON MOBILE (BOOTSTRAP OVERRIDE)
-================================================== */
-
-@media (max-width: 767px) {
-
-  /* Fix isotope layout */
-  .portfolio .isotope-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-  }
-
-  /* Force 2 columns */
-  .portfolio .portfolio-item {
-    flex: 0 0 50% !important;
-    max-width: 50% !important;
-  }
-
-}
-
