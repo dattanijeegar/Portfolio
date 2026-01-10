@@ -525,46 +525,103 @@ section,
   }
 }
 
-/*--------------------------------------------------------------
-# About Section
---------------------------------------------------------------*/
+/* ================================
+   ABOUT SECTION
+================================ */
+
+.about {
+  padding: 60px 0;
+}
+
+/* Section heading */
 .about .content h2 {
   font-weight: 700;
   font-size: 24px;
-}
-
-.about .content ul {
-  list-style: none;
-  padding: 0;
-}
-
-.about .content ul li {
   margin-bottom: 20px;
-  display: flex;
+}
+
+/* Align image and text vertically */
+.about .row {
   align-items: center;
 }
 
-.about .content ul strong {
-  margin-right: 10px;
-}
-
-.about .content ul i {
-  font-size: 16px;
-  margin-right: 5px;
-  color: var(--accent-color);
-  line-height: 0;
-}
-
-/* About section profile image fix */
+/* Profile image */
 .about .col-lg-4 img {
   width: 100%;
-  max-width: 360px;   /* controls size */
+  max-width: 360px;
   height: auto;
   display: block;
-  margin: 0 auto;    /* center horizontally */
+  margin: 0 auto;
   border-radius: 12px;
   object-fit: cover;
 }
+
+/* Content area */
+.about .content {
+  padding-left: 10px;
+}
+
+/* List reset */
+.about .content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* List items */
+.about .content ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+/* Icon styling */
+.about .content ul li i {
+  font-size: 16px;
+  color: var(--accent-color);
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+/* Strong text (if used) */
+.about .content ul strong {
+  margin-right: 6px;
+}
+
+/* ================================
+   RESPONSIVE FIXES
+================================ */
+
+@media (max-width: 992px) {
+  .about .content {
+    padding-left: 0;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 40px 0;
+  }
+
+  .about .col-lg-4 img {
+    max-width: 240px;
+    margin-bottom: 24px;
+  }
+
+  .about .content h2 {
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .about .content ul li {
+    font-size: 15px;
+  }
+}
+
 
 
 /*--------------------------------------------------------------
