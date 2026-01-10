@@ -1343,4 +1343,23 @@ section,
 
 
 }
+/* ==================================================
+   FORCE 2 ITEMS PER ROW ON MOBILE (BOOTSTRAP OVERRIDE)
+================================================== */
+
+@media (max-width: 767px) {
+
+  /* Fix isotope layout */
+  .portfolio .isotope-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* Force 2 columns */
+  .portfolio .portfolio-item {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+
+}
 
