@@ -1305,3 +1305,47 @@ section,
   }
 
 }
+
+  /* =====================================
+   ABOUT SECTION – FORCE ARROWS ON MOBILE
+   SAME AS DESKTOP
+===================================== */
+
+#about .content ul {
+  padding-left: 0;
+  margin: 0;
+}
+
+#about .content ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+/* Arrow icon */
+#about .content ul li i {
+  font-size: 16px;
+  color: var(--accent-color);
+  margin-top: 4px;
+  flex-shrink: 0;   /* 🔥 IMPORTANT: prevents disappearing */
+}
+
+/* Text */
+#about .content ul li span,
+#about .content ul li {
+  line-height: 1.6;
+}
+
+/* Mobile-specific reinforcement */
+@media (max-width: 768px) {
+  #about .content ul li {
+    align-items: flex-start;
+  }
+
+  #about .content ul li i {
+    display: inline-block !important;
+    visibility: visible !important;
+  }
+}
+
