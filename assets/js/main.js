@@ -243,4 +243,15 @@ const glightbox = GLightbox({
   selector: '.glightbox'
 });
 
+/* Fix Isotope overlap on mobile after images/videos load */
+window.addEventListener('load', () => {
+  const isoContainer = document.querySelector('.isotope-container');
+  if (isoContainer && window.innerWidth <= 768) {
+    setTimeout(() => {
+      isoContainer.dispatchEvent(new Event('resize'));
+    }, 300);
+  }
+});
+
+
 
