@@ -1266,36 +1266,39 @@ section,
   }
 
 }
-/* ===========================
-   PORTFOLIO / MEDIA MOBILE FIX
-=========================== */
-@media (max-width: 768px) {
+/* =========================================
+   ISOTOPE SAFE MOBILE + TABLET FIX
+   2 ITEMS PER ROW | NO OVERLAP | ALL FILTERS WORK
+========================================= */
 
-  /* Force single column layout */
-  .portfolio-container,
+@media (max-width: 992px) {
+
+  /* Let Isotope control positioning */
   .isotope-container {
     display: flex !important;
-    flex-direction: column;
-    gap: 24px; /* space between thumbnails */
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
   }
 
   /* Each portfolio item */
   .portfolio-item {
-    width: 100% !important;
-    height: auto !important;
-    margin-bottom: 20px;
     position: relative !important;
+    width: 50% !important; /* 2 items per row */
+    padding: 10px;
+    height: auto !important;
+    transform: none !important;
   }
 
-  /* Portfolio content wrapper */
+  /* Content wrapper */
   .portfolio-content {
+    position: relative;
     height: auto !important;
-    position: relative !important;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 12px;
   }
 
-  /* Images & videos inside portfolio */
+  /* Media inside */
   .portfolio-content img,
   .portfolio-content video {
     width: 100%;
@@ -1304,12 +1307,11 @@ section,
     object-fit: cover;
   }
 
-  /* Play button alignment */
-  .portfolio-content .play-btn {
-    position: absolute;
-    inset: 0;
-    margin: auto;
-  }
-
 }
 
+/* Extra safety for very small phones */
+@media (max-width: 480px) {
+  .portfolio-item {
+    width: 100% !important; /* 1 item per row on very small phones */
+  }
+}
