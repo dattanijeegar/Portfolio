@@ -1234,3 +1234,136 @@ section,
     text-align: center;
   }
 }
+
+
+/* ===========================
+   HERO MOBILE FIX
+=========================== */
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: 85vh;
+    padding: 60px 0;
+  }
+
+  .hero img {
+    object-position: center top; /* fixes crop issue */
+  }
+
+  .hero .container {
+    transform: translateY(-120px); /* move text UP */
+    text-align: left;
+    padding: 0 20px;
+  }
+
+  .hero h2 {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+}
+/* =========================================
+   PORTFOLIO GRID – MOBILE & TABLET FIX
+   2 ITEMS PER ROW | NO OVERLAP
+========================================= */
+
+/* Mobile + Tablet */
+@media (max-width: 992px) {
+
+  /* Grid container */
+  .portfolio-container,
+  .isotope-container {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 20px; /* space between items */
+  }
+
+  /* Each item */
+  .portfolio-item {
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    margin: 0 !important;
+  }
+
+  /* Content wrapper */
+  .portfolio-content {
+    height: auto !important;
+    position: relative !important;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  /* Images & videos */
+  .portfolio-content img,
+  .portfolio-content video {
+    width: 100%;
+    height: auto !important;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Fix video play button */
+  .portfolio-content .play-btn {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    z-index: 5;
+  }
+}
+
+/* Extra safety for very small phones */
+@media (max-width: 480px) {
+  .portfolio-container,
+  .isotope-container {
+    gap: 16px;
+  }
+}
+
+/* ===============================
+   ABOUT SECTION ARROW FIX
+   SHOW ARROWS ON MOBILE
+================================ */
+
+/* Target the list */
+.about .content ul {
+  padding-left: 0;
+}
+
+/* Each list item */
+.about .content ul li {
+  position: relative;
+  padding-left: 28px; /* space for arrow */
+  margin-bottom: 14px;
+}
+
+/* Arrow before each line */
+.about .content ul li::before {
+  content: "›"; /* arrow */
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--accent-color);
+  display: inline-block;
+}
+
+/* Mobile safety override */
+@media (max-width: 768px) {
+  .about .content ul li {
+    padding-left: 26px;
+  }
+
+  .about .content ul li::before {
+    font-size: 18px;
+    left: 0;
+    display: inline-block !important;
+    visibility: visible !important;
+  }
+}
+
