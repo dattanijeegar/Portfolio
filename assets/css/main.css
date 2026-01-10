@@ -1290,5 +1290,30 @@ section,
     height: auto !important;
   }
 
+  /* =====================================
+   PORTFOLIO – FORCE 2 ITEMS PER ROW
+   Mobile + Tablet (No HTML Change)
+===================================== */
+
+/* Mobile & Tablet */
+@media (max-width: 991px) {
+
+  .portfolio .portfolio-item {
+    width: 50%;
+  }
+
+}
+
+/* Small mobile spacing fix */
+@media (max-width: 575px) {
+
+  .portfolio .portfolio-item {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+}
+
+
 }
 
