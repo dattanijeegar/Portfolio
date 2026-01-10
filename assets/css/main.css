@@ -412,7 +412,7 @@ section,
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 60px 0;
-  overflow: hidden; /* 🔥 FIXES ISOTOPE OVERLAP */
+  
 }
 
 
