@@ -1266,52 +1266,28 @@ section,
   }
 
 }
-/* =========================================
-   ISOTOPE SAFE MOBILE + TABLET FIX
-   2 ITEMS PER ROW | NO OVERLAP | ALL FILTERS WORK
-========================================= */
+/* =====================================
+   MOBILE OVERLAP FIX (ISOTOPE SAFE)
+   DOES NOT CHANGE LAYOUT
+===================================== */
 
-@media (max-width: 992px) {
+@media (max-width: 768px) {
 
-  /* Let Isotope control positioning */
-  .isotope-container {
-    display: flex !important;
-    flex-wrap: wrap;
-    margin-left: -10px;
-    margin-right: -10px;
-  }
-
-  /* Each portfolio item */
   .portfolio-item {
-    position: relative !important;
-    width: 50% !important; /* 2 items per row */
-    padding: 10px;
     height: auto !important;
-    transform: none !important;
   }
 
-  /* Content wrapper */
   .portfolio-content {
-    position: relative;
     height: auto !important;
     overflow: hidden;
-    border-radius: 12px;
   }
 
-  /* Media inside */
   .portfolio-content img,
   .portfolio-content video {
+    display: block;
     width: 100%;
     height: auto !important;
-    display: block;
-    object-fit: cover;
   }
 
 }
 
-/* Extra safety for very small phones */
-@media (max-width: 480px) {
-  .portfolio-item {
-    width: 100% !important; /* 1 item per row on very small phones */
-  }
-}
