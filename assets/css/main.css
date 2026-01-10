@@ -448,94 +448,101 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Hero Section
+# Hero Section (FINAL – DESKTOP + MOBILE CONSISTENT)
 --------------------------------------------------------------*/
-/*------------------------------------------------------*/
+
 .hero {
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding: 80px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-.hero picture,
-.hero picture img {
-  width: 100%;
-  height: 100%;
-}
-
+/* Hero Image */
 .hero img {
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Dark overlay for better text readability */
-.hero:before {
-  content: "";
-  background: rgba(0, 0, 0, 0.45);
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 1;
+}
+
+/* Dark overlay */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
   z-index: 2;
 }
 
+/* Hero Content */
 .hero .container {
   position: relative;
   z-index: 3;
-  transform: translateY(-90px); /* moves text up */
+  text-align: center;
+  padding: 0 20px;
+  max-width: 100%;
 }
 
+/* Heading */
 .hero h2 {
   margin: 0;
   font-size: 64px;
   font-weight: 700;
-  color: #F5F5F5; /* premium off-white */
+  color: #F5F5F5;
   text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
 }
 
+/* Subtitle */
 .hero p {
-  margin: 5px 0 0 0;
+  margin-top: 8px;
   font-size: 26px;
   color: #EAEAEA;
   text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
 }
 
 .hero p span {
+  border-bottom: 2px solid #F4C430;
   letter-spacing: 1px;
-  border-bottom: 2px solid #F4C430; /* gold accent */
 }
 
+/* Social links (if used later) */
 .hero .social-links {
   margin-top: 25px;
 }
 
-.hero .social-links a {
-  font-size: 24px;
-  display: inline-block;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1;
-  margin-right: 20px;
-  transition: 0.3s;
-}
+/* ===============================
+   MOBILE HERO FIX (AUTHORITATIVE)
+================================ */
 
-.hero .social-links a:hover {
-  color: #F4C430;
-}
-
-/* Mobile responsiveness */
 @media (max-width: 768px) {
-  .hero h2 {
-    font-size: 32px;
+
+  .hero {
+    min-height: 100vh;
   }
 
-  .hero p {
-    font-size: 20px;
+  .hero img {
+    object-position: center;
   }
 
   .hero .container {
-    transform: translateY(-40px);
+    transform: none !important; /* 🔥 kills all old transforms */
+    text-align: center;
+  }
+
+  .hero h2 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 18px;
   }
 }
 
@@ -1238,34 +1245,8 @@ section,
 }
 
 
-/* ===========================
-   HERO MOBILE FIX
-=========================== */
-@media (max-width: 768px) {
-
-  .hero {
-    min-height: 85vh;
-    padding: 60px 0;
-  }
 
  
-
-  .hero .container {
-    transform: translateY(-120px); /* move text UP */
-    text-align: left;
-    padding: 0 20px;
-  }
-
-  .hero h2 {
-    font-size: 30px;
-    line-height: 1.2;
-  }
-
-  .hero p {
-    font-size: 18px;
-  }
-
-}
 /* =====================================
    MOBILE OVERLAP FIX (ISOTOPE SAFE)
    DOES NOT CHANGE LAYOUT
