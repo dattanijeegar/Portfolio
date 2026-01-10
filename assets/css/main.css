@@ -516,6 +516,34 @@ section,
 .hero .social-links {
   margin-top: 25px;
 }
+/* ===============================
+   HERO TEXT LEFT ALIGN (DESKTOP + MOBILE SAFE)
+================================ */
+
+.hero {
+  justify-content: flex-start; /* move content left */
+}
+
+.hero .container {
+  max-width: 1200px;
+  margin-left: 0;
+  margin-right: auto;
+  padding-left: 80px;   /* controls left spacing */
+  text-align: left;
+}
+
+/* Text alignment */
+.hero h2,
+.hero p {
+  text-align: left;
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+  .hero .container {
+    padding-left: 20px; /* smaller padding on mobile */
+  }
+}
 
 /* ===============================
    MOBILE HERO FIX (AUTHORITATIVE)
