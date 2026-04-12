@@ -1322,8 +1322,8 @@ transform: translateY(-80px);
 }
 
 /* =====================================
-   FINAL MOBILE FIX – NO OVERLAP
-   Clean Isotope Override & Thumbnail Setup
+   FINAL MOBILE FIX – NO OVERLAP / NO SHRINKING
+   Ignores HTML nesting errors by forcing flat blocks
 ===================================== */
 @media (max-width: 768px) {
   
@@ -1336,39 +1336,39 @@ transform: translateY(-80px);
     visibility: visible !important;
   }
 
-  /* 1. Disable isotope absolute stacking entirely on mobile */
-  .portfolio .isotope-container {
-    position: relative !important;
-    height: auto !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 20px !important; /* Clean spacing between items */
-    overflow: hidden;
-  }
-
-  /* 2. Force items to stack naturally */
-  .portfolio-item {
+  /* 1. Neutralize all recursive HTML nesting, padding, and flex effects */
+  .portfolio .isotope-container, 
+  .portfolio .row, 
+  .portfolio .portfolio-item, 
+  .portfolio .portfolio-content {
     position: static !important;
-    transform: none !important;
+    display: block !important;
     width: 100% !important;
+    max-width: 100% !important;
     height: auto !important;
-    left: auto !important;
+    margin: 0 !important; 
+    padding: 0 !important; 
     top: auto !important;
-    margin: 0 !important;
+    left: auto !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
   }
 
-  /* 3. Stop image sizes shrinking on scroll */
-  .portfolio-content {
-    width: 100% !important;
-    height: auto !important;
-    overflow: hidden;
+  /* 2. Hard-lock the items from scaling, animating smaller, or overlapping */
+  .portfolio-item {
+    margin-bottom: 25px !important; /* Only standard spacing below items */
+    transform: none !important; /* Blocks AOS / Isotope from shrinking it */
+    scale: 1 !important;
   }
 
+  /* 3. Lock Image Ratios - Guarantee full width */
   .portfolio-content img,
   .portfolio-content video {
     display: block !important;
     width: 100% !important;
-    height: auto !important; /* Ensures the image doesn't get distorted */
-    object-fit: cover;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 150px !important; /* Fallback floor protection */
+    object-fit: cover !important;
   }
 }
