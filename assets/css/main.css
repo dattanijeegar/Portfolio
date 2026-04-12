@@ -1336,11 +1336,10 @@ transform: translateY(-80px);
     visibility: visible !important;
   }
 
-  /* 1. Neutralize all recursive HTML nesting, padding, and flex effects */
+  /* 1. Neutralize recursive HTML nesting ONLY on Layout Wrappers */
   .portfolio .isotope-container, 
   .portfolio .row, 
-  .portfolio .portfolio-item, 
-  .portfolio .portfolio-content {
+  .portfolio .portfolio-item {
     position: static !important;
     display: block !important;
     width: 100% !important;
@@ -1351,24 +1350,33 @@ transform: translateY(-80px);
     top: auto !important;
     left: auto !important;
     box-sizing: border-box !important;
-    overflow: visible !important;
   }
 
-  /* 2. Hard-lock the items from scaling, animating smaller, or overlapping */
+  /* 2. Format the items to stack with spacing and disable shrinking */
   .portfolio-item {
-    margin-bottom: 25px !important; /* Only standard spacing below items */
-    transform: none !important; /* Blocks AOS / Isotope from shrinking it */
+    margin-bottom: 25px !important; 
+    transform: none !important; 
     scale: 1 !important;
   }
 
-  /* 3. Lock Image Ratios - Guarantee full width */
+  /* 3. CRITICAL: Keep Content box relative so overlays don't break out & overlap */
+  .portfolio-content {
+    position: relative !important; 
+    overflow: hidden !important;   
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 4. Lock Image Ratios */
   .portfolio-content img,
   .portfolio-content video {
     display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     height: auto !important;
-    min-height: 150px !important; /* Fallback floor protection */
     object-fit: cover !important;
   }
 }
