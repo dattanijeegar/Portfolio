@@ -1400,10 +1400,27 @@ transform: translateY(-80px);
     height: auto !important;
   }
 
-  .portfolio-content img,
+  .portfolio-content img {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  },
   .portfolio-content video {
     width: 100%;
     height: auto !important;
     display: block;
   }
+}
+  @media (max-width: 768px) {
+
+  .portfolio .isotope-container {
+    display: block !important;
+  }
+
+  .portfolio-item {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+
 }
