@@ -1297,50 +1297,9 @@ transform: translateY(-80px);
 
  
 /* =====================================
-   MOBILE OVERLAP FIX (ISOTOPE SAFE)
-   DOES NOT CHANGE LAYOUT
-===================================== */
-
-@media (max-width: 768px) {
-
-  .portfolio-item {
-    height: auto !important;
-  }
-
-  .portfolio-content {
-    height: auto !important;
-    overflow: hidden;
-  }
-
-  .portfolio-content img,
-  .portfolio-content video {
-    display: block;
-    width: 100%;
-    height: auto !important;
-  }
-
-  /* =====================================
-   MOBILE ONLY – ISOTOPE OVERLAP FIX
-   DOES NOT AFFECT DESKTOP
-===================================== */
-
-@media (max-width: 768px) {
-
-  #portfolio {
-    overflow: visible;
-  }
-
-  .portfolio .isotope-container {
-    overflow: visible;
-  }
-
-}
-
-  /* =====================================
    ABOUT SECTION – FORCE ARROWS ON MOBILE
    SAME AS DESKTOP
 ===================================== */
-
 #about .content ul {
   padding-left: 0;
   margin: 0;
@@ -1351,6 +1310,7 @@ transform: translateY(-80px);
   align-items: flex-start;
   gap: 10px;
   margin-bottom: 16px;
+  line-height: 1.6;
 }
 
 /* Arrow icon */
@@ -1358,69 +1318,57 @@ transform: translateY(-80px);
   font-size: 16px;
   color: var(--accent-color);
   margin-top: 4px;
-  flex-shrink: 0;   /* 🔥 IMPORTANT: prevents disappearing */
-}
-
-/* Text */
-#about .content ul li span,
-#about .content ul li {
-  line-height: 1.6;
-}
-
-/* Mobile-specific reinforcement */
-@media (max-width: 768px) {
-  #about .content ul li {
-    align-items: flex-start;
-  }
-
-  #about .content ul li i {
-    display: inline-block !important;
-    visibility: visible !important;
-  }
+  flex-shrink: 0;   /* IMPORTANT: prevents disappearing */
 }
 
 /* =====================================
    FINAL MOBILE FIX – NO OVERLAP
+   Clean Isotope Override & Thumbnail Setup
 ===================================== */
 @media (max-width: 768px) {
+  
+  /* Mobile-specific reinforcement for About arrows */
+  #about .content ul li {
+    align-items: flex-start;
+  }
+  #about .content ul li i {
+    display: inline-block !important;
+    visibility: visible !important;
+  }
 
-  /* Disable isotope absolute stacking */
+  /* 1. Disable isotope absolute stacking entirely on mobile */
   .portfolio .isotope-container {
-    position: static !important;
+    position: relative !important;
     height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important; /* Clean spacing between items */
+    overflow: hidden;
   }
 
-  .portfolio-item {
-    position: static !important;
-    width: 100% !important;
-    margin-bottom: 20px;
-  }
-
-  .portfolio-content {
-    height: auto !important;
-  }
-
-  .portfolio-content img {
-  width: 100% !important;
-  height: auto !important;
-  display: block;
-  },
-  .portfolio-content video {
-    width: 100%;
-    height: auto !important;
-    display: block;
-  }
-}
-  @media (max-width: 768px) {
-
-  .portfolio .isotope-container {
-    display: block !important;
-  }
-
+  /* 2. Force items to stack naturally */
   .portfolio-item {
     position: static !important;
     transform: none !important;
     width: 100% !important;
+    height: auto !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 0 !important;
   }
 
+  /* 3. Stop image sizes shrinking on scroll */
+  .portfolio-content {
+    width: 100% !important;
+    height: auto !important;
+    overflow: hidden;
+  }
+
+  .portfolio-content img,
+  .portfolio-content video {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important; /* Ensures the image doesn't get distorted */
+    object-fit: cover;
+  }
 }
