@@ -1321,9 +1321,10 @@ transform: translateY(-80px);
   flex-shrink: 0;   /* IMPORTANT: prevents disappearing */
 }
 
-/* =====================================
+
+ /* =====================================
    FINAL MOBILE FIX – NO OVERLAP / NO SHRINKING
-   Ignores HTML nesting errors by forcing flat blocks
+   Supports Isotope Javascript Filtering
 ===================================== */
 @media (max-width: 768px) {
   
@@ -1336,10 +1337,9 @@ transform: translateY(-80px);
     visibility: visible !important;
   }
 
-  /* 1. Neutralize recursive HTML nesting ONLY on Layout Wrappers */
+  /* 1. Neutralize nesting ONLY on layout wrappers so they don't corrupt sizes */
   .portfolio .isotope-container, 
-  .portfolio .row, 
-  .portfolio .portfolio-item {
+  .portfolio .row {
     position: static !important;
     display: block !important;
     width: 100% !important;
@@ -1352,14 +1352,21 @@ transform: translateY(-80px);
     box-sizing: border-box !important;
   }
 
-    /* 2. Format the items to stack with spacing and disable shrinking */
+  /* 2. Format Items - REMOVED display:block !important so Isotope can hide filtered items */
   .portfolio .portfolio-item {
-    margin-bottom: 30px !important; /* Adjust this number to increase/decrease space */
-    transform: none !important; 
-    scale: 1 !important;
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 0 30px 0 !important; /* The 30px gap is maintained */
+    padding: 0 !important; 
+    top: auto !important;
+    left: auto !important;
+    box-sizing: border-box !important;
+    transform: none !important; /* Stop dynamic overlapping on scroll */
   }
 
-  /* 3. CRITICAL: Keep Content box relative so overlays don't break out & overlap */
+  /* 3. Keep Content box relative so overlays stay completely trapped inside */
   .portfolio-content {
     position: relative !important; 
     overflow: hidden !important;   
