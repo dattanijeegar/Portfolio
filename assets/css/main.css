@@ -1379,3 +1379,31 @@ transform: translateY(-80px);
   }
 }
 
+/* =====================================
+   FINAL MOBILE FIX – NO OVERLAP
+===================================== */
+@media (max-width: 768px) {
+
+  /* Disable isotope absolute stacking */
+  .portfolio .isotope-container {
+    position: static !important;
+    height: auto !important;
+  }
+
+  .portfolio-item {
+    position: static !important;
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+
+  .portfolio-content {
+    height: auto !important;
+  }
+
+  .portfolio-content img,
+  .portfolio-content video {
+    width: 100%;
+    height: auto !important;
+    display: block;
+  }
+}
